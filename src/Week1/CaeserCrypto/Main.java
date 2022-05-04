@@ -13,25 +13,59 @@ package Week1.CaeserCrypto;
 public class Main {
     public static void main(String[] args) {
 
-        solution("test", 5);
-
+        System.out.println(solution("a B z", 4));
     }
 
     public static String solution(String s, int n) {
 
-
-
+        StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < s.length(); i++) {
-            String str = s.substring(i, i+1);
 
-            if (str == "^[a-z]*$") {
-                if (str + n > "z") {
+            //문자열 문자 단위로 슬라이싱
+            char character = s.charAt(i);
+
+            //공백이 아니면 실행
+            if (character != ' ') {
+
+                //대문자 범위 = 65 ~ 90
+                //소문자 범위 = 97 ~ 122
+
+                // 대문자 일때
+                if (character >= 65 && character <= 90) {
+
+                    // n 만큼 밀었을 때 Z 보다 커지면
+                    if (character + n > 90) {
+                        result.append(Character.toString(65 + character + n - 1 - 90));
+                    }
+                    else {
+                        result.append(Character.toString(character + n));
+                    }
 
                 }
 
+                //
+
+
+                // 소문자 일때
+                if (character >= 97 && character <= 122) {
+
+                    // n 만큼 밀었을 때 z 보다 커지면
+                    if (character + n > 122) {
+                        result.append(Character.toString(97 + character + n - 1 - 122));
+                    }
+
+                    else {
+                        result.append(Character.toString(character + n));
+                    }
+                }
+            }
+            //공백은 그대로 문자열에 추가
+            else {
+                result.append(character);
             }
         }
-        return "test";
+
+        return String.valueOf(result);
     }
 }
