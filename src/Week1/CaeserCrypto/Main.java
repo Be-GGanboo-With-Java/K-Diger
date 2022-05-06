@@ -44,9 +44,6 @@ public class Main {
 
                 }
 
-                //
-
-
                 // 소문자 일때
                 if (character >= 97 && character <= 122) {
 
