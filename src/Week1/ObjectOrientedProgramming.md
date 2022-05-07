@@ -205,44 +205,86 @@
 <br>
 
 ### Java 에서 다형성을 만족시키려면?
+- 서로 다른 2개 이상의 객체가 하나의 부모에게 상속받아, 그 추상 메서드를 각기 용도에 맞게 달리하여 오버라이딩, 오버로딩하여 구현한다.
 
-- 상속을 통해 다른 클래스의 속성과 기능을 획득하여, 다른 작업을 수행할 수 있도록 한다.
 
-
-    class Shapes {
-      public void area() {
-        System.out.println("The formula for area of ");
+    import java.util.Scanner;
+    
+    interface OverWatch { // 인터페이스
+      void name(); // 추상 메소드
+      void lClick(); // 추상 메소드
+      void rClick(); // 추상 메소드
+      void shiftButton(); // 추상 메소드
+      void eButton(); // 추상 메소드
+      void qButton(); // 추상 메소드
+    }
+    
+    class Mei implements OverWatch { // 인터페이스 구현 클래스
+        public void name() { // 오버라이딩
+          System.out.println("이름 : 메이");
+      }
+        public void lClick() { // 오버라이딩
+          System.out.println("좌클릭 : 냉각총");
+      }
+        public void rClick() { // 오버라이딩
+          System.out.println("우클릭 : 고드름 투사체");
+      }
+        public void shiftButton() { // 오버라이딩
+          System.out.println("shift : 급속 빙결");
+      }
+        public void eButton() { // 오버라이딩
+          System.out.println("e : 빙벽");
+      }
+        public void qButton() { // 오버라이딩
+          System.out.println("q : 눈보라(궁극기)");
       }
     }
-
-      class Triangle extends Shapes {
-        public void area() {
-          System.out.println("Triangle is ½ * base * height ");
-        }
+    
+    class Reaper implements OverWatch { // 인터페이스 구현 클래스
+      public void name() { // 오버라이딩
+        System.out.println("이름 : 리퍼");
       }
-
-      class Circle extends Shapes {
-        public void area() {
-          System.out.println("Circle is 3.14 * radius * radius ");
-        }
+      public void lClick() { // 오버라이딩
+        System.out.println("좌클릭 : 헬파이어 샷건");
       }
-
-      class Main {
-        public static void main(String[] args) {
-          Shapes myShape = new Shapes();  // Create a Shapes object
-          Shapes myTriangle = new Triangle();  // Create a Triangle object
-          Shapes myCircle = new Circle();  // Create a Circle object
-          myShape.area();
-          myTriangle.area();
-          myShape.area();
-          myCircle.area();
-        }
+      public void rClick() { // 오버라이딩
+        System.out.println("우클릭 : 없음");
       }
+      public void shiftButton() { // 오버라이딩
+        System.out.println("shift : 망령화");
+      }
+      public void eButton() { // 오버라이딩
+        System.out.println("e : 그림자 밟기");
+      }
+      public void qButton() { // 오버라이딩
+        System.out.println("q : 죽음의 꽃(궁극기)");
+      }
+    }
+    
+    public class PolymorphismEx01 {
+      public static void main(String[] args) { // main 메소드
+        OverWatch ow; // 인터페이스 객체 선언
 
-### 코드 해설
+        System.out.println("플레이할 캐릭터 번호 선택(1. 메이, 2. 리퍼, 3. 맥크리)");
 
-Shapes 라는 클래스를 상속 받아 구현한 클래스 Triangle, Circle 이 있다.
+        Scanner sc = new Scanner(System.in); // 스캐너 객체
 
+        int n = sc.nextInt();
 
-
-하지만 
+        if(n==1) {
+          ow = new Mei(); // 업캐스팅
+        } else if(n==2) {
+          ow = new Reaper(); // 업캐스팅
+        } else {
+          ow = new Mccree(); // 업캐스팅
+        }
+      
+      //선택한 조건에 따라서 부모 객체로 자식 메소드 사용(하나의 타입으로 다양한 결과를 얻어냄 / 다형성)
+      ow.name();
+      ow.lClick();
+      ow.rClick();
+      ow.shiftButton();
+      ow.eButton();
+      ow.qButton();
+      }
+    }
