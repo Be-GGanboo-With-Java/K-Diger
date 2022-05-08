@@ -64,11 +64,11 @@
         }
     }
 
-    //Main.java//
+        //Main.java//
 
-    public class Main {
-        public static void main(String args[]) {
-            EncapTest encap = new EncapTest();
+        public class Main {
+            public static void main(String args[]) {
+                EncapTest encap = new EncapTest();
 
             // #2
             encap.setName("James");
@@ -169,32 +169,32 @@
 - 다중 상속 (여러 클래스 상속 받기)
 
 
-    class Animal {  
-      void eat(){
-        System.out.println("eating...");
-      } 
-    }
+        class Animal {  
+          void eat(){
+            System.out.println("eating...");
+          } 
+        }
 
-    class Dog extends Animal {
-      void bark() {
-        System.out.println("barking...");
-      }  
-    }
+        class Dog extends Animal {
+          void bark() {
+            System.out.println("barking...");
+          }  
+        }
 
-    class Cat extends Animal {
-      void meow() {
-        System.out.println("meowing...");
-      }
-    }
+        class Cat extends Animal {
+          void meow() {
+            System.out.println("meowing...");
+          }
+        }
 
-    class TestInheritance3 {
-      public static void main(String args[]) {  
-        Cat c=new Cat();  
-        c.meow();  
-        c.eat();
-        //c.bark();//C.T.Error  
-      }
-    }
+        class TestInheritance3 {
+          public static void main(String args[]) {  
+            Cat c=new Cat();  
+            c.meow();  
+            c.eat();
+            //c.bark();//C.T.Error  
+          }
+        }
 
 ---
 
@@ -208,62 +208,62 @@
 - 서로 다른 2개 이상의 객체가 하나의 부모에게 상속받아, 그 추상 메서드를 각기 용도에 맞게 달리하여 오버라이딩, 오버로딩하여 구현한다.
 
 
-    import java.util.Scanner;
-    
-    interface OverWatch { // 인터페이스
-      void name(); // 추상 메소드
-      void lClick(); // 추상 메소드
-      void rClick(); // 추상 메소드
-      void shiftButton(); // 추상 메소드
-      void eButton(); // 추상 메소드
-      void qButton(); // 추상 메소드
-    }
-    
-    class Mei implements OverWatch { // 인터페이스 구현 클래스
-        public void name() { // 오버라이딩
-          System.out.println("이름 : 메이");
-      }
-        public void lClick() { // 오버라이딩
-          System.out.println("좌클릭 : 냉각총");
-      }
-        public void rClick() { // 오버라이딩
-          System.out.println("우클릭 : 고드름 투사체");
-      }
-        public void shiftButton() { // 오버라이딩
-          System.out.println("shift : 급속 빙결");
-      }
-        public void eButton() { // 오버라이딩
-          System.out.println("e : 빙벽");
-      }
-        public void qButton() { // 오버라이딩
-          System.out.println("q : 눈보라(궁극기)");
-      }
-    }
-    
-    class Reaper implements OverWatch { // 인터페이스 구현 클래스
-      public void name() { // 오버라이딩
-        System.out.println("이름 : 리퍼");
-      }
-      public void lClick() { // 오버라이딩
-        System.out.println("좌클릭 : 헬파이어 샷건");
-      }
-      public void rClick() { // 오버라이딩
-        System.out.println("우클릭 : 없음");
-      }
-      public void shiftButton() { // 오버라이딩
-        System.out.println("shift : 망령화");
-      }
-      public void eButton() { // 오버라이딩
-        System.out.println("e : 그림자 밟기");
-      }
-      public void qButton() { // 오버라이딩
-        System.out.println("q : 죽음의 꽃(궁극기)");
-      }
-    }
-    
-    public class PolymorphismEx01 {
-      public static void main(String[] args) { // main 메소드
-        OverWatch ow; // 인터페이스 객체 선언
+        import java.util.Scanner;
+
+        interface OverWatch { // 인터페이스
+          void name(); // 추상 메소드
+          void lClick(); // 추상 메소드
+          void rClick(); // 추상 메소드
+          void shiftButton(); // 추상 메소드
+          void eButton(); // 추상 메소드
+          void qButton(); // 추상 메소드
+        }
+
+        class Mei implements OverWatch { // 인터페이스 구현 클래스
+            public void name() { // 오버라이딩
+              System.out.println("이름 : 메이");
+          }
+            public void lClick() { // 오버라이딩
+              System.out.println("좌클릭 : 냉각총");
+          }
+            public void rClick() { // 오버라이딩
+              System.out.println("우클릭 : 고드름 투사체");
+          }
+            public void shiftButton() { // 오버라이딩
+              System.out.println("shift : 급속 빙결");
+          }
+            public void eButton() { // 오버라이딩
+              System.out.println("e : 빙벽");
+          }
+            public void qButton() { // 오버라이딩
+              System.out.println("q : 눈보라(궁극기)");
+          }
+        }
+
+        class Reaper implements OverWatch { // 인터페이스 구현 클래스
+          public void name() { // 오버라이딩
+            System.out.println("이름 : 리퍼");
+          }
+          public void lClick() { // 오버라이딩
+            System.out.println("좌클릭 : 헬파이어 샷건");
+          }
+          public void rClick() { // 오버라이딩
+            System.out.println("우클릭 : 없음");
+          }
+          public void shiftButton() { // 오버라이딩
+            System.out.println("shift : 망령화");
+          }
+          public void eButton() { // 오버라이딩
+            System.out.println("e : 그림자 밟기");
+          }
+          public void qButton() { // 오버라이딩
+            System.out.println("q : 죽음의 꽃(궁극기)");
+          }
+        }
+
+        public class PolymorphismEx01 {
+          public static void main(String[] args) { // main 메소드
+            OverWatch ow; // 인터페이스 객체 선언
 
         System.out.println("플레이할 캐릭터 번호 선택(1. 메이, 2. 리퍼, 3. 맥크리)");
 
@@ -287,4 +287,4 @@
       ow.eButton();
       ow.qButton();
       }
-    }
+        }
