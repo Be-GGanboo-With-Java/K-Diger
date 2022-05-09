@@ -33,36 +33,36 @@
 - **getter setter** 메서드를 활용한다. #2
 
 
-    //EncapTest.java//
+        //EncapTest.java//
 
-    public class EncapTest {
-        
-        // #1
-        private String name;
+        public class EncapTest {
 
-        // #1
-        private int age;
-    
-        // #2
-        public int getAge() {
-            return age;
-        }
-    
-        // #2
-        public String getName() {
-            return name;
-        }
+            // #1
+            private String name;
 
-        // #2
-        public void setAge(int newAge) {
-            age = newAge;
-        }
+            // #1
+            private int age;
 
-        // #2
-        public void setName(String newName) {
-            name = newName;
+            // #2
+            public int getAge() {
+                return age;
+            }
+
+            // #2
+            public String getName() {
+                return name;
+            }
+
+            // #2
+            public void setAge(int newAge) {
+                age = newAge;
+            }
+
+            // #2
+            public void setName(String newName) {
+                name = newName;
+            }
         }
-    }
 
         //Main.java//
 
@@ -70,19 +70,19 @@
             public static void main(String args[]) {
                 EncapTest encap = new EncapTest();
 
-            // #2
-            encap.setName("James");
+                // #2
+                encap.setName("James");
 
-            // #2
-            encap.setAge(20);
+                // #2
+                encap.setAge(20);
 
-            // #2
-            encap.setIdNum("12343ms");
-    
-            // #2
-            System.out.print("Name : " + encap.getName() + " Age : " + encap.getAge());
+                // #2
+                encap.setIdNum("12343ms");
+
+                // #2
+                System.out.print("Name : " + encap.getName() + " Age : " + encap.getAge());
+            }
         }
-    }
 
 ### 캡슐화의 효과
 
@@ -113,47 +113,47 @@
   - 추상 클래스를 상속하면, 모든 추상 메서드를 구현해야한다.
 
 
-    public abstract class Employee {
-        private String name;
-        private String address;
-        private int number;
-        
-        public Employee(String name, String address, int number) {
-            System.out.println("Constructing an Employee");
-            this.name = name;
-            this.address = address;
-            this.number = number;
+        public abstract class Employee {
+            private String name;
+            private String address;
+            private int number;
+
+            public Employee(String name, String address, int number) {
+                System.out.println("Constructing an Employee");
+                this.name = name;
+                this.address = address;
+                this.number = number;
+            }
+
+            public double computePay() {
+                System.out.println("Inside Employee computePay");
+                return 0.0;
+            }
+
+            public void mailCheck() {
+                System.out.println("Mailing a check to " + this.name + " " + this.address);
+            }
+
+            public String toString() {
+                return name + " " + address + " " + number;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public String getAddress() {
+                return address;
+            }
+
+            public void setAddress(String newAddress) {
+                address = newAddress;
+            }
+
+            public int getNumber() {
+                return number;
+            }
         }
-        
-        public double computePay() {
-            System.out.println("Inside Employee computePay");
-            return 0.0;
-        }
-        
-        public void mailCheck() {
-            System.out.println("Mailing a check to " + this.name + " " + this.address);
-        }
-        
-        public String toString() {
-            return name + " " + address + " " + number;
-        }
-        
-        public String getName() {
-            return name;
-        }
-        
-        public String getAddress() {
-            return address;
-        }
-        
-        public void setAddress(String newAddress) {
-            address = newAddress;
-        }
-        
-        public int getNumber() {
-            return number;
-        }
-    }
 
 ---
 
@@ -265,26 +265,26 @@
           public static void main(String[] args) { // main 메소드
             OverWatch ow; // 인터페이스 객체 선언
 
-        System.out.println("플레이할 캐릭터 번호 선택(1. 메이, 2. 리퍼, 3. 맥크리)");
+            System.out.println("플레이할 캐릭터 번호 선택(1. 메이, 2. 리퍼, 3. 맥크리)");
 
-        Scanner sc = new Scanner(System.in); // 스캐너 객체
+            Scanner sc = new Scanner(System.in); // 스캐너 객체
 
-        int n = sc.nextInt();
+            int n = sc.nextInt();
 
-        if(n==1) {
-          ow = new Mei(); // 업캐스팅
-        } else if(n==2) {
-          ow = new Reaper(); // 업캐스팅
-        } else {
-          ow = new Mccree(); // 업캐스팅
-        }
-      
-      //선택한 조건에 따라서 부모 객체로 자식 메소드 사용(하나의 타입으로 다양한 결과를 얻어냄 / 다형성)
-      ow.name();
-      ow.lClick();
-      ow.rClick();
-      ow.shiftButton();
-      ow.eButton();
-      ow.qButton();
-      }
+            if(n==1) {
+              ow = new Mei(); // 업캐스팅
+            } else if(n==2) {
+              ow = new Reaper(); // 업캐스팅
+            } else {
+              ow = new Mccree(); // 업캐스팅
+            }
+
+          //선택한 조건에 따라서 부모 객체로 자식 메소드 사용(하나의 타입으로 다양한 결과를 얻어냄 / 다형성)
+          ow.name();
+          ow.lClick();
+          ow.rClick();
+          ow.shiftButton();
+          ow.eButton();
+          ow.qButton();
+          }
         }
