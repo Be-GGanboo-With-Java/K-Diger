@@ -44,24 +44,17 @@
         private int age;
     
         // #2
-        public int getAge() {
-            return age;
-        }
+        public int getAge() { return age; }
     
         // #2
-        public String getName() {
-            return name;
-        }
+        public String getName() { return name; }
 
         // #2
-        public void setAge(int newAge) {
-            age = newAge;
-        }
+        public void setAge(int newAge) { age = newAge; }
 
         // #2
-        public void setName(String newName) {
-            name = newName;
-        }
+        public void setName(String newName) { name = newName; }
+
     }
 
     //Main.java//
@@ -155,11 +148,23 @@
         }
     }
 
+### Abstract Class VS Interface
+
+- 추상 클래스는 추상 메서드뿐만 아니라 생성자, 필드, 일반 메소드도 포함할 수 있다.
+
+<br>
+
+- 인터페이스는 오로지 추상 메서드와 상수만을 포함할 수 있다.
+
+<br>
+
+- 자바는 클래스를 통한 다중 상속은 지원하지 않지만 클래스와 인터페이스를 통한 다중 상속은 지원하기 때문에 인터페이스를 사용한다.
+
 ---
 
 ## 상속(Inheritance)
 
-> 한 개채(클래스가) 부모 (다른 클래스)의 속성과 동작을 획득하는 메커니즘이다.
+> 한 클래스가 다른 클래스의 속성과 동작을 획득하는 메커니즘이다.
 
 <br>
 
@@ -169,30 +174,37 @@
 - 다중 상속 (여러 클래스 상속 받기)
 
 
+    // 부모 클래스
     class Animal {  
-      void eat(){
-        System.out.println("eating...");
-      } 
+      
+      void eat() { System.out.println("eating..."); }
+
     }
 
+    //자식 클래스 (상속 받음)
     class Dog extends Animal {
-      void bark() {
-        System.out.println("barking...");
-      }  
+      
+    void bark() { System.out.println("barking..."); }  
+    
     }
 
+    //자식 클래스 (상속 받음)
     class Cat extends Animal {
-      void meow() {
-        System.out.println("meowing...");
-      }
+      
+    void meow() { System.out.println("meowing..."); }
+    
     }
 
+    //메인 클래스
     class TestInheritance3 {
       public static void main(String args[]) {  
-        Cat c=new Cat();  
+        
+        Cat c=new Cat();
         c.meow();  
         c.eat();
-        //c.bark();//C.T.Error  
+
+        //Type Error
+        //c.bark(); 
       }
     }
 
@@ -200,91 +212,91 @@
 
 ## 다형성(Polymorphism)
 
-> 하나의 작업을 여러가지 방법으로 수행할 수 있는 성격
+> 상위 클래스에서 동일한 메서드로 하위 클래스를 서로 다르게 동작 시킬 수 있는 원리
+
+부모 클래스가 자식 클래스의 동작 방식을 알 수 없어도 오버라이딩을 통해 자식 클래스에 접근 가능하다.
 
 <br>
 
 ### Java 에서 다형성을 만족시키려면?
-- 서로 다른 2개 이상의 객체가 하나의 부모에게 상속받아, 그 추상 메서드를 각기 용도에 맞게 달리하여 오버라이딩, 오버로딩하여 구현한다.
+1) 부모-자식 클래스 구현
+2) 메서드 오버라이딩
+3) 업캐스팅하여 객체 선언
+4) 부모 클래스 객체로 자식 메서드 호출
 
+
+** 업캐스팅이란? 자식 클래스가 부모 클래스 타입으로 변환 되는 것 <br>
+** 다운캐스팅이란? 부모 클래스가 자식 클래스 타입으로 변환 되는 것
 
     import java.util.Scanner;
     
-    interface OverWatch { // 인터페이스
+    interface Player { // 인터페이스
       void name(); // 추상 메소드
-      void lClick(); // 추상 메소드
-      void rClick(); // 추상 메소드
-      void shiftButton(); // 추상 메소드
-      void eButton(); // 추상 메소드
-      void qButton(); // 추상 메소드
+      void shoot(); // 추상 메소드
+      void hiddenShoot(); // 추상 메소드
     }
     
-    class Mei implements OverWatch { // 인터페이스 구현 클래스
-        public void name() { // 오버라이딩
-          System.out.println("이름 : 메이");
-      }
-        public void lClick() { // 오버라이딩
-          System.out.println("좌클릭 : 냉각총");
-      }
-        public void rClick() { // 오버라이딩
-          System.out.println("우클릭 : 고드름 투사체");
-      }
-        public void shiftButton() { // 오버라이딩
-          System.out.println("shift : 급속 빙결");
-      }
-        public void eButton() { // 오버라이딩
-          System.out.println("e : 빙벽");
-      }
-        public void qButton() { // 오버라이딩
-          System.out.println("q : 눈보라(궁극기)");
-      }
-    }
-    
-    class Reaper implements OverWatch { // 인터페이스 구현 클래스
-      public void name() { // 오버라이딩
-        System.out.println("이름 : 리퍼");
-      }
-      public void lClick() { // 오버라이딩
-        System.out.println("좌클릭 : 헬파이어 샷건");
-      }
-      public void rClick() { // 오버라이딩
-        System.out.println("우클릭 : 없음");
-      }
-      public void shiftButton() { // 오버라이딩
-        System.out.println("shift : 망령화");
-      }
-      public void eButton() { // 오버라이딩
-        System.out.println("e : 그림자 밟기");
-      }
-      public void qButton() { // 오버라이딩
-        System.out.println("q : 죽음의 꽃(궁극기)");
-      }
-    }
-    
-    public class PolymorphismEx01 {
-      public static void main(String[] args) { // main 메소드
-        OverWatch ow; // 인터페이스 객체 선언
 
-        System.out.println("플레이할 캐릭터 번호 선택(1. 메이, 2. 리퍼, 3. 맥크리)");
+    // 인터페이스 구현 클래스
+    class Zlatan implements Player {
+      
+        // 오버라이딩
+        public void name() { 
+          System.out.println("이름 : 즐라탄 이브라히모비치");
+      }
 
-        Scanner sc = new Scanner(System.in); // 스캐너 객체
+        // 오버라이딩
+        public void shoot() {
+          System.out.println("맞고 죽어라 슛");
+      }
+
+        // 오버라이딩
+        public void hiddenShoot() { // 오버라이딩
+          System.out.println("아크로바틱 슛");
+      }
+
+    }
+
+    // 인터페이스 구현 클래스
+    class Drogba implements Player { 
+
+      // 오버라이딩
+      public void name() {
+        System.out.println("이름 : 디디에 드로그바");
+      }
+
+      // 오버라이딩
+      public void shoot() {
+        System.out.println("대포알 슛");
+      }
+
+      // 오버라이딩
+      public void hiddenShoot() {
+        System.out.println("수비수 3명 데리고 슛하기");
+      }
+    }
+    
+    public class PolymorphismExample {
+      public static void main(String[] args) {
+
+        // 인터페이스 객체 선언
+        Player player; 
+
+        System.out.println("플레이할 캐릭터 번호 선택(1. 즐라탄, 2. 드록바)");
+
+        Scanner sc = new Scanner(System.in);
 
         int n = sc.nextInt();
 
-        if(n==1) {
-          ow = new Mei(); // 업캐스팅
-        } else if(n==2) {
-          ow = new Reaper(); // 업캐스팅
-        } else {
-          ow = new Mccree(); // 업캐스팅
-        }
+        // 업캐스팅
+        if(n==1) { player = new Zlatan(); }
+        // 업캐스팅 
+        else if(n==2) { player = new Drogba(); }
       
-      //선택한 조건에 따라서 부모 객체로 자식 메소드 사용(하나의 타입으로 다양한 결과를 얻어냄 / 다형성)
-      ow.name();
-      ow.lClick();
-      ow.rClick();
-      ow.shiftButton();
-      ow.eButton();
-      ow.qButton();
+        //선택한 조건에 따라서 부모 객체로 자식 메소드 사용(하나의 타입으로 다양한 결과를 얻어냄 / 다형성)
+        player.name();
+        player.shoot();
+        player.hiddenShoot();
+
       }
     }
