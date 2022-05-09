@@ -33,49 +33,49 @@
 - **getter setter** 메서드를 활용한다. #2
 
 
-    //EncapTest.java//
+        //EncapTest.java//
 
-    public class EncapTest {
-        
-        // #1
-        private String name;
+        public class EncapTest {
 
-        // #1
-        private int age;
-    
-        // #2
-        public int getAge() { return age; }
-    
-        // #2
-        public String getName() { return name; }
+            // #1
+            private String name;
 
-        // #2
-        public void setAge(int newAge) { age = newAge; }
-
-        // #2
-        public void setName(String newName) { name = newName; }
-
-    }
-
-    //Main.java//
-
-    public class Main {
-        public static void main(String args[]) {
-            EncapTest encap = new EncapTest();
+            // #1
+            private int age;
 
             // #2
-            encap.setName("James");
+            public int getAge() { return age; }
 
             // #2
-            encap.setAge(20);
+            public String getName() { return name; }
 
             // #2
-            encap.setIdNum("12343ms");
-    
+            public void setAge(int newAge) { age = newAge; }
+
             // #2
-            System.out.print("Name : " + encap.getName() + " Age : " + encap.getAge());
+            public void setName(String newName) { name = newName; }
+
         }
-    }
+
+        //Main.java//
+
+        public class Main {
+            public static void main(String args[]) {
+                EncapTest encap = new EncapTest();
+
+                // #2
+                encap.setName("James");
+
+                // #2
+                encap.setAge(20);
+
+                // #2
+                encap.setIdNum("12343ms");
+
+                // #2
+                System.out.print("Name : " + encap.getName() + " Age : " + encap.getAge());
+            }
+        }
 
 ### 캡슐화의 효과
 
@@ -106,47 +106,47 @@
   - 추상 클래스를 상속하면, 모든 추상 메서드를 구현해야한다.
 
 
-    public abstract class Employee {
-        private String name;
-        private String address;
-        private int number;
-        
-        public Employee(String name, String address, int number) {
-            System.out.println("Constructing an Employee");
-            this.name = name;
-            this.address = address;
-            this.number = number;
+        public abstract class Employee {
+            private String name;
+            private String address;
+            private int number;
+
+            public Employee(String name, String address, int number) {
+                System.out.println("Constructing an Employee");
+                this.name = name;
+                this.address = address;
+                this.number = number;
+            }
+
+            public double computePay() {
+                System.out.println("Inside Employee computePay");
+                return 0.0;
+            }
+
+            public void mailCheck() {
+                System.out.println("Mailing a check to " + this.name + " " + this.address);
+            }
+
+            public String toString() {
+                return name + " " + address + " " + number;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public String getAddress() {
+                return address;
+            }
+
+            public void setAddress(String newAddress) {
+                address = newAddress;
+            }
+
+            public int getNumber() {
+                return number;
+            }
         }
-        
-        public double computePay() {
-            System.out.println("Inside Employee computePay");
-            return 0.0;
-        }
-        
-        public void mailCheck() {
-            System.out.println("Mailing a check to " + this.name + " " + this.address);
-        }
-        
-        public String toString() {
-            return name + " " + address + " " + number;
-        }
-        
-        public String getName() {
-            return name;
-        }
-        
-        public String getAddress() {
-            return address;
-        }
-        
-        public void setAddress(String newAddress) {
-            address = newAddress;
-        }
-        
-        public int getNumber() {
-            return number;
-        }
-    }
 
 ### Abstract Class VS Interface
 
@@ -174,39 +174,39 @@
 - 다중 상속 (여러 클래스 상속 받기)
 
 
-    // 부모 클래스
-    class Animal {  
-      
-      void eat() { System.out.println("eating..."); }
+        // 부모 클래스
+        class Animal {  
 
-    }
+          void eat() { System.out.println("eating..."); }
 
-    //자식 클래스 (상속 받음)
-    class Dog extends Animal {
-      
-    void bark() { System.out.println("barking..."); }  
-    
-    }
+        }
 
-    //자식 클래스 (상속 받음)
-    class Cat extends Animal {
-      
-    void meow() { System.out.println("meowing..."); }
-    
-    }
+        //자식 클래스 (상속 받음)
+        class Dog extends Animal {
 
-    //메인 클래스
-    class TestInheritance3 {
-      public static void main(String args[]) {  
-        
-        Cat c=new Cat();
-        c.meow();  
-        c.eat();
+        void bark() { System.out.println("barking..."); }  
 
-        //Type Error
-        //c.bark(); 
-      }
-    }
+        }
+
+        //자식 클래스 (상속 받음)
+        class Cat extends Animal {
+
+        void meow() { System.out.println("meowing..."); }
+
+        }
+
+        //메인 클래스
+        class TestInheritance3 {
+          public static void main(String args[]) {  
+
+            Cat c=new Cat();
+            c.meow();  
+            c.eat();
+
+            //Type Error
+            //c.bark(); 
+          }
+        }
 
 ---
 
