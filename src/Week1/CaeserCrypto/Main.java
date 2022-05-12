@@ -57,6 +57,7 @@ public class Main {
                     }
                 }
             }
+
             //공백은 그대로 문자열에 추가
             else {
                 result.append(character);
