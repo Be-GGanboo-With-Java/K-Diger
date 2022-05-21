@@ -58,6 +58,7 @@ class Solution2 {
 public class Main {
 
     public static void main(String[] args) {
+
         Solution2 sol2 = new Solution2();
 
         sol2.solution(5);
