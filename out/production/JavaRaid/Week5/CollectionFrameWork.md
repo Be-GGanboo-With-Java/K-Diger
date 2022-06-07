@@ -8,7 +8,7 @@ Stack, Queue, Map 등 널리 알려진 자료구조를 바탕으로 객체나 �
 
 ---
 
-# List Collection
+# List
 
 ## [ 개요 ]
 
@@ -120,4 +120,98 @@ LinkedList 는 양방향 LinkedList 로 구성되어 있다. (Double LinkedList)
 | add     | -         | 비교적 빠름     |
 | delete  | -         | 비교적 빠름     |
 | search | 비교적 빠름    | -          |
+
+---
+
+# Map
+
+## [ 개요 ]
+
+Map 은 리스트나 배열처럼 순차적으로(sequential) 해당 요소 값을 구하지 않고 key 를 통해 value 를 얻는다.
+
+맵(Map)의 가장 큰 특징이라면 key 로 value 를 얻어낸다는 것이 있다.
+
+HashMap, HashTable, TreeMap 의 인터페이스이다.
+
+## [ 기본 메서드 ]
+
+    // 주어진 키와 값을 추가하여 저장되면 값을 리턴
+    V put(K Key, V value)
+
+    // 주어진 키가 있는지 확인
+    boolean containsKey(Object Key)
+
+    // 주어진 값이 있는지 확인
+    boolean containsValue(Object value)
+
+    // 모든 Map.Entry 객체를 Set에 담아 리턴
+    Set<Map.Entry<K,V>> entrySet() 	
+
+    // 모든 키를 Set객체에 담아서 리턴
+    Set<K> keySet()
+
+    // 주어진 키에 있는 값을 리턴
+    V get(Object key)
+    
+    //컬렉션이 비어있는지
+    boolean isEmpty() 	
+
+    // 저장되어 있는 전체 객체의 수를 리턴
+    int Size()
+
+    // 저장된 모든 값을 Collection에 담아서 리턴
+    Collection<V> values()
+
+    // 저장된 모든 Map.Entry를 삭제
+    void clear()
+
+    // 주어진 키와 일치하는 Map.Entry를 삭제
+    V remove(Object Key)
+
+---
+
+## Map - [ HashMap ]
+
+HashMap 은 put 한 순서가 보장되지 않는다.
+
+HashMap 에서 특정 값을 찾는 내부 로직은
+
+> Key 값과 Hash 값을 비트연산(AND) 연산을 통해 인덱스를 구한다.
+
+---
+
+## Map - Definition
+
+    HashMap<String,String> map1 = new HashMap<String,String>();
+
+    HashMap<String,String> map2 = new HashMap<>();
+
+    HashMap<String,String> map3 = new HashMap<>(map1);
+
+    HashMap<String,String> map4 = new HashMap<>(10);
+
+    HashMap<String,String> map5 = new HashMap<>(10, 0.7f);
+
+    HashMap<String,String> map6 = new HashMap<String,String>(){{
+    put("a","b");
+    }};
+
+
+### Arraylist vs HashMap Search Compare
+
+> Arraylist 는 for 문으로 다 돌아야한다.
+>
+> HashMap 은 Key 값에 대하여 비트연산을 하여 성능이 아주아주 빠르다.
+
+### HashMap - Specification
+
+> HashMap 테이블에 동일한 해시가 중복이 되더라도, 중복된 인덱스에 LinkedList 로 이어져 달려있기때문에
+>
+> .next 같은 다음 노드 조회연산으로 빠르게 조회가 가능하다.
+
+데이터가 계속 추가되면 느리다... 
+
+노드를 늘리면 해시가 바뀌게 되어 모든 노드들의 데이터가 재할당되어야하기 때문이다.
+
+-> 초기사이즈를 지정하여 성능 이슈를 줄일 수도 있다.
 
